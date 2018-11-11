@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/CSS/material.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Serial Access</title>
+</head>
+<body>
+<script src="/JS/material.js"></script>
+<p><pre>{{ log }}</pre></p>
+<h4>Send over serial</h4>
+<textarea id="textsub"></textarea>
+<br>
+<button class="mdl-button" onclick="go();">Send</button>
+<script>
+    function go() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/run?cmd=list', true);
+
+        xhr.onload = function () {
+            alert(xhr.responseText);
+        };
+
+        xhr.send(null);
+    }
+</script>
+</body>
+</html>
